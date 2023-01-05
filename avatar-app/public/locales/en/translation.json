@@ -1,0 +1,11 @@
+{
+  "validationError": {
+    "emailRequired": "Email is required",
+    "emailValid": "Email must be a valid email address",
+    "passwordRequired": "Password is required"
+  },
+  "label": {
+    "email": "Email Address",
+    "password": "Password"
+  }
+}
