@@ -41,7 +41,7 @@ export const userNavConfig: INavConfig[] = [
   },
   {
     title: "Customer",
-    path: "/customer",
+    path: "/customer1",
     icon: getIcon("fa-solid:users"),
   },
   {
@@ -56,32 +56,32 @@ export const userNavConfig: INavConfig[] = [
   },
   {
     title: "Salnes & Connection",
-    path: "/uploads",
+    path: "/uploads2",
     icon: getIcon("fluent:arrow-growth-20-filled"),
   },
   {
     title: "Refil Sale",
-    path: "/customer",
+    path: "/customer3",
     icon: getIcon("entypo:shop"),
   },
   {
     title: "Transacton",
-    path: "/customer",
+    path: "/customer4",
     icon: getIcon("heroicons:currency-rupee-20-solid"),
   },
   {
     title: "Trash Consumer",
-    path: "/customer",
+    path: "/trash",
     icon: getIcon("ri:delete-bin-5-line"),
   },
   {
     title: "Products",
-    path: "/customer",
+    path: "/customer5",
     icon: getIcon("ps:sale-tag"),
   },
   {
     title: "Orders",
-    path: "/customer",
+    path: "/customer6",
     icon: getIcon("material-symbols:order-approve"),
   },
 ];

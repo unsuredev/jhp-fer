@@ -9,7 +9,6 @@ import {
   Card,
   Grid,
   Container,
-  CssBaseline,
   TextField,
 } from "@mui/material";
 import { BASE_URL } from "../../config/constant";
@@ -299,10 +298,6 @@ export default function ImageUpload() {
     }
   };
 
-  React.useEffect(() => {
-    document.title = "Image upload | Jaman HP Gas";
-  }, []);
-
   const findRole = () => {
     let token: any = localStorage.getItem("jhp_token");
     var decoded = jwt_decode(token);
@@ -315,67 +310,56 @@ export default function ImageUpload() {
     }
   };
 
-  const getUserName = () => {
-    let token: any = localStorage.getItem("jhp_token");
-    var decoded = jwt_decode(token);
-    //@ts-ignore
-    let { name } = decoded;
-    if (name && name != undefined) {
-      return name;
-    }
-  };
-
   return (
     <React.Fragment>
-      <div>
-        <Grid container>
-          <Grid item xs={12} sm={12} md={12}>
-            <Tabs
-              value={value}
-              onChange={handleChangevalue}
-              indicatorColor="primary"
-              textColor="primary"
-              centered
-            >
-              <Tab
-                label="New Customer"
-                icon={<FiberNewIcon color="primary" />}
-              />
-              <Tab label="Old Customer" icon={<NewReleasesIcon />} />
-            </Tabs>
-            <form noValidate autoComplete="off">
-              <TextField
-                id="outlined-basic"
-                label="Main Aadhaar No"
-                variant="outlined"
-                fullWidth
-                name="aadhaar"
-                autoComplete="aadhaar"
-                autoFocus
-                value={state.aadhaar}
-                onChange={handleChange}
-                type="number"
-              />
-            </form>
-          </Grid>
-          <div>
-            {/* @ts-ignore */}
-            <Grid container spacing={2} justifyContent="center">
-              <Grid item>
-                <Button
-                  variant="contained"
-                  component="label"
-                  color="primary"
-                  onClick={handleFind}
-                >
-                  UPLOAD CONSUMER'S PHOTO
-                </Button>
-              </Grid>
-            </Grid>
-          </div>
+      <Grid
+        container
+        maxWidth="md"
+        justifyContent="center"
+        style={{ marginTop: "-4rem" }}
+      >
+        <Grid item xs={12} sm={12} md={12}>
+          <Tabs
+            value={value}
+            onChange={handleChangevalue}
+            indicatorColor="primary"
+            textColor="primary"
+            centered
+          >
+            <Tab label="New Customer" icon={<FiberNewIcon color="primary" />} />
+            <Tab
+              label="Old Customer"
+              icon={<NewReleasesIcon color="secondary" />}
+            />
+          </Tabs>
         </Grid>
-      </div>
-      <div style={{ marginRight: "1rem" }}>
+        <Grid item xs={12} sm={6} md={6}>
+          <form noValidate autoComplete="off">
+            <TextField
+              id="outlined-basic"
+              label="Main Aadhaar No"
+              variant="outlined"
+              fullWidth
+              name="aadhaar"
+              autoComplete="aadhaar"
+              autoFocus
+              value={state.aadhaar}
+              onChange={handleChange}
+              type="number"
+            />
+          </form>
+          <Button
+            variant="contained"
+            component="label"
+            color="primary"
+            onClick={handleFind}
+          >
+            FIND AND UPLOAD PHOTO
+          </Button>
+        </Grid>
+      </Grid>
+
+      <div>
         <Container maxWidth="md">
           <Grid container>
             {users.map((user, i) => (
@@ -392,8 +376,8 @@ export default function ImageUpload() {
                 }}
               >
                 <Grid item>
-                  <Card key={i}>
-                    <CardContent style={{ marginLeft: "2rem" }}>
+                  <Card key={i} sx={{ minWidth: 275 }}>
+                    <CardContent sx={{ height: 440 }}>
                       <Typography color="textSecondary" gutterBottom>
                         Customer's Details
                       </Typography>
@@ -412,59 +396,52 @@ export default function ImageUpload() {
                       />
 
                       <CardHeader style={{ textAlign: "center" }} />
-                      <div style={{ marginTop: "-40px" }}>
-                        {/* @ts-ignore */}
-                        <Typography>
-                          Name : {user.name.toUpperCase()}
-                        </Typography>
-                        {/* @ts-ignore */}
-                        <Typography>
-                          Main Aadhaar : {user.mainAadhaar}
-                        </Typography>
-                        {/* @ts-ignore */}
-                        <Typography>
-                          Family Aadhaar : {user.familyAadhaar}
-                        </Typography>
-                        {/* @ts-ignore */}
-                        <Typography>Mobile No : {user.mobile}</Typography>
-                        {/* @ts-ignore */}
-                        <Typography>
-                          Registration No : {user.regNo || "NA"}
-                        </Typography>
-                        <Typography>
-                          Consumer No :{user.consumerNo || "NA"}
-                        </Typography>
-                        {/* @ts-ignore */}
-                        <Typography>
-                          Main Agent : {user.mainAgent.toUpperCase()}
-                        </Typography>
-                        {/* @ts-ignore */}
-                        <Typography>
-                          Sub Agent : {user.subAgent || "NA"}
-                        </Typography>
-                        <Typography>
-                          Registered Agency Name :
-                          <span style={{ color: "red" }}>
-                            {" "}
-                            {user.registeredAgencyName || "NA"}
-                          </span>{" "}
-                        </Typography>
-                        <Typography>
-                          Remarks : {user.remarks || "NA"}
-                        </Typography>
-                        {/* @ts-ignore */}
-                        <Typography>
-                          Created On :{" "}
-                          {moment(user.createdAt).format("LLL") || "NA"}
-                        </Typography>
-                        <Typography
-                          variant="subtitle2"
-                          gutterBottom
-                          color="primary"
-                        >
-                          Added By : {user.addedBy || "NA"}
-                        </Typography>
-                      </div>
+                      {/* @ts-ignore */}
+                      <Typography>Name : {user.name.toUpperCase()}</Typography>
+                      {/* @ts-ignore */}
+                      <Typography>Main Aadhaar : {user.mainAadhaar}</Typography>
+                      {/* @ts-ignore */}
+                      <Typography>
+                        Family Aadhaar : {user.familyAadhaar}
+                      </Typography>
+                      {/* @ts-ignore */}
+                      <Typography>Mobile No : {user.mobile}</Typography>
+                      {/* @ts-ignore */}
+                      <Typography>
+                        Registration No : {user.regNo || "NA"}
+                      </Typography>
+                      <Typography>
+                        Consumer No :{user.consumerNo || "NA"}
+                      </Typography>
+                      {/* @ts-ignore */}
+                      <Typography>
+                        Main Agent : {user.mainAgent.toUpperCase()}
+                      </Typography>
+                      {/* @ts-ignore */}
+                      <Typography>
+                        Sub Agent : {user.subAgent || "NA"}
+                      </Typography>
+                      <Typography>
+                        Registered Agency Name :
+                        <span style={{ color: "red" }}>
+                          {" "}
+                          {user.registeredAgencyName || "NA"}
+                        </span>{" "}
+                      </Typography>
+                      <Typography>Remarks : {user.remarks || "NA"}</Typography>
+                      {/* @ts-ignore */}
+                      <Typography>
+                        Created On :{" "}
+                        {moment(user.createdAt).format("LLL") || "NA"}
+                      </Typography>
+                      <Typography
+                        variant="subtitle2"
+                        gutterBottom
+                        color="primary"
+                      >
+                        Added By : {user.addedBy || "NA"}
+                      </Typography>
+
                       {/* @ts-ignore */}
                     </CardContent>
                   </Card>
@@ -718,12 +695,12 @@ export default function ImageUpload() {
       <div>
         <Container maxWidth="md">
           {/* End hero unit */}
-          <Grid container spacing={4} style={{ marginRight: "1rem" }}>
+          <Grid container spacing={4}>
             {users.map((user, i) => (
-              <Grid item key={i} xs={12} sm={6} md={4}>
-                <div>
+              <Grid item key={i} xs={12} sm={12} md={12} display="flex">
+                <div style={{ width: "400px" }}>
                   <Typography component="h2" variant="h5">
-                    Photo: Installation Letter
+                    Installation Letter
                   </Typography>
                   <br></br>
                   {user.InstalationLetter ? (
@@ -737,10 +714,9 @@ export default function ImageUpload() {
                     "No Image found"
                   )}
                 </div>
-                <br></br>
                 <div>
                   <Typography component="h2" variant="h5">
-                    Photo: Satisfaction Letter
+                    Satisfaction Letter
                   </Typography>
                   <br></br>
                   {user.satisfactionLetter ? (
@@ -754,10 +730,9 @@ export default function ImageUpload() {
                     "No Image found"
                   )}
                 </div>
-                <br></br>
                 <div>
                   <Typography component="h2" variant="h5">
-                    Photo: Other Document
+                    Other Doc
                   </Typography>
                   <br></br>
                   {user.otherLetter ? (

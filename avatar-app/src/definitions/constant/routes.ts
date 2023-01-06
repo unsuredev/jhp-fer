@@ -10,6 +10,6 @@ export const ROUTES = {
   customer: "/customer",
   customerDashboard: "/customer/dashboard",
   dailyReport: "/report",
-  fingerPrint: "/finger",
-  imageUpload: "/upload",
+  fingerPrint: "/trash",
+  imageUpload: "/uploads",
 };

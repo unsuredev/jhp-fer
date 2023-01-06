@@ -1,4 +1,5 @@
 import { BASE_URL } from "../config/constant";
+import jwt_decode from "jwt-decode";
 
 const tokenKey = "jhp_token";
 
@@ -47,5 +48,15 @@ export function getToken() {
   }
   return res;
 }
+
+export const getUserName = () => {
+  let token: any = localStorage.getItem(tokenKey);
+  var decoded = jwt_decode(token);
+  //@ts-ignore
+  let { name } = decoded;
+  if (name && name != undefined) {
+    return name;
+  }
+};
 
 export { httpClient };

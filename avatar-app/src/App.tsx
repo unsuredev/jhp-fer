@@ -11,7 +11,7 @@ import { DashboardPage } from "pages/DashboardPage";
 import { UserPage } from "pages/UserPage";
 import { DailyReportPage } from "pages/DailyReportPage";
 import { FingerPrintPage } from "pages/FingerprintPage";
-import { ImageUploadPage } from "pages/FileUploadPage";
+import { ImageUploadPage } from "pages/ImageUploadPage";
 
 import { ROUTES } from "definitions/constant/routes";
 
