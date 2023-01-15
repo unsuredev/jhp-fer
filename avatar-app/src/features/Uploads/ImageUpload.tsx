@@ -311,447 +311,450 @@ export default function ImageUpload() {
   };
 
   return (
-    <React.Fragment>
-      <Grid
-        container
-        maxWidth="md"
-        justifyContent="center"
-        style={{ marginTop: "-4rem" }}
-      >
-        <Grid item xs={12} sm={12} md={12}>
-          <Tabs
-            value={value}
-            onChange={handleChangevalue}
-            indicatorColor="primary"
-            textColor="primary"
-            centered
-          >
-            <Tab label="New Customer" icon={<FiberNewIcon color="primary" />} />
-            <Tab
-              label="Old Customer"
-              icon={<NewReleasesIcon color="secondary" />}
-            />
-          </Tabs>
-        </Grid>
-        <Grid item xs={12} sm={6} md={6}>
-          <form noValidate autoComplete="off">
-            <TextField
-              id="outlined-basic"
-              label="Main Aadhaar No"
-              variant="outlined"
-              fullWidth
-              name="aadhaar"
-              autoComplete="aadhaar"
-              autoFocus
-              value={state.aadhaar}
-              onChange={handleChange}
-              type="number"
-            />
-          </form>
-          <Button
-            variant="contained"
-            component="label"
-            color="primary"
-            onClick={handleFind}
-          >
-            FIND AND UPLOAD PHOTO
-          </Button>
-        </Grid>
-      </Grid>
-
-      <div>
-        <Container maxWidth="md">
-          <Grid container>
-            {users.map((user, i) => (
-              <Grid
-                item
-                xs={12}
-                sm={12}
-                md={6}
-                lg={6}
-                style={{
-                  justifyContent: "center",
-                  alignContent: "center",
-                  textAlign: "left",
-                }}
+    <div>
+      <Container>
+        <Grid container maxWidth="md" justifyContent="center" mt={3}>
+          <Grid item xs={12} sm={12} md={12} spacing={2}>
+            <Tabs
+              value={value}
+              onChange={handleChangevalue}
+              indicatorColor="primary"
+              textColor="primary"
+              centered
+            >
+              <Tab
+                label="New Customer"
+                icon={<FiberNewIcon color="primary" />}
+              />
+              <br />
+              <Tab
+                label="Old Customer"
+                icon={<NewReleasesIcon color="secondary" />}
+              />
+            </Tabs>
+          </Grid>
+          <Grid item xs={12} sm={6} md={6}>
+            <form noValidate autoComplete="off">
+              <TextField
+                id="outlined-basic"
+                label="Main Aadhaar No"
+                variant="outlined"
+                fullWidth
+                name="aadhaar"
+                autoComplete="aadhaar"
+                autoFocus
+                value={state.aadhaar}
+                onChange={handleChange}
+                type="number"
+              />
+            </form>
+            <div>
+              <Button
+                variant="outlined"
+                color="primary"
+                size="medium"
+                onClick={handleFind}
+                fullWidth
               >
-                <Grid item>
-                  <Card key={i} sx={{ minWidth: 275 }}>
-                    <CardContent sx={{ height: 440 }}>
-                      <Typography color="textSecondary" gutterBottom>
-                        Customer's Details
-                      </Typography>
-                      <CardHeader
-                        action={
-                          <div style={{ margin: "0px", padding: "0px" }}>
-                            {user.installtatus === "Complete" ? (
-                              <IconButton aria-label="settings">
-                                <CheckCircleIcon style={{ color: "blue" }} />
-                              </IconButton>
-                            ) : null}
-                          </div>
-                        }
-                        //@ts-ignore agent card
-                        title={user.name.toUpperCase()}
-                      />
+                FIND AND UPLOAD PHOTO
+              </Button>
+            </div>
+          </Grid>
+        </Grid>
 
-                      <CardHeader style={{ textAlign: "center" }} />
-                      {/* @ts-ignore */}
-                      <Typography>Name : {user.name.toUpperCase()}</Typography>
-                      {/* @ts-ignore */}
-                      <Typography>Main Aadhaar : {user.mainAadhaar}</Typography>
-                      {/* @ts-ignore */}
-                      <Typography>
-                        Family Aadhaar : {user.familyAadhaar}
-                      </Typography>
-                      {/* @ts-ignore */}
-                      <Typography>Mobile No : {user.mobile}</Typography>
-                      {/* @ts-ignore */}
-                      <Typography>
-                        Registration No : {user.regNo || "NA"}
-                      </Typography>
-                      <Typography>
-                        Consumer No :{user.consumerNo || "NA"}
-                      </Typography>
-                      {/* @ts-ignore */}
-                      <Typography>
-                        Main Agent : {user.mainAgent.toUpperCase()}
-                      </Typography>
-                      {/* @ts-ignore */}
-                      <Typography>
-                        Sub Agent : {user.subAgent || "NA"}
-                      </Typography>
-                      <Typography>
-                        Registered Agency Name :
-                        <span style={{ color: "red" }}>
-                          {" "}
-                          {user.registeredAgencyName || "NA"}
-                        </span>{" "}
-                      </Typography>
-                      <Typography>Remarks : {user.remarks || "NA"}</Typography>
-                      {/* @ts-ignore */}
-                      <Typography>
-                        Created On :{" "}
-                        {moment(user.createdAt).format("LLL") || "NA"}
-                      </Typography>
+        <div>
+          <Container maxWidth="md">
+            <Grid container>
+              {users.map((user, i) => (
+                <Grid
+                  item
+                  xs={12}
+                  sm={12}
+                  md={6}
+                  lg={6}
+                  style={{
+                    justifyContent: "center",
+                    alignContent: "center",
+                    textAlign: "left",
+                  }}
+                >
+                  <Grid item>
+                    <br />
+                    <Card key={i} sx={{ minWidth: 275 }}>
+                      <CardContent>
+                        <Typography color="textSecondary" gutterBottom>
+                          Customer's Details
+                        </Typography>
+                        <CardHeader
+                          style={{ margin: "0px", padding: "0px" }}
+                          action={
+                            <div style={{ margin: "0px", padding: "0px" }}>
+                              {user.installtatus === "Complete" ? (
+                                <IconButton aria-label="settings">
+                                  <CheckCircleIcon style={{ color: "blue" }} />
+                                </IconButton>
+                              ) : null}
+                            </div>
+                          }
+                          //@ts-ignore agent card
+                          title={user.name.toUpperCase()}
+                        />
+
+                        <CardHeader style={{ textAlign: "center" }} />
+                        {/* @ts-ignore */}
+                        <Typography>
+                          Main Aadhaar : {user.mainAadhaar}
+                        </Typography>
+                        {/* @ts-ignore */}
+                        <Typography>
+                          Family Aadhaar : {user.familyAadhaar}
+                        </Typography>
+                        {/* @ts-ignore */}
+                        <Typography>Mobile No : {user.mobile}</Typography>
+                        {/* @ts-ignore */}
+                        <Typography>
+                          Registration No : {user.regNo || "NA"}
+                        </Typography>
+                        <Typography>
+                          Consumer No :{user.consumerNo || "NA"}
+                        </Typography>
+                        {/* @ts-ignore */}
+                        <Typography>
+                          Main Agent : {user.mainAgent.toUpperCase()}
+                        </Typography>
+                        {/* @ts-ignore */}
+                        <Typography>
+                          Registered Agency Name :
+                          <span style={{ color: "red" }}>
+                            {" "}
+                            {user.registeredAgencyName || "NA"}
+                          </span>{" "}
+                        </Typography>
+                        <Typography>
+                          Remarks : {user.remarks || "NA"}
+                        </Typography>
+                        {/* @ts-ignore */}
+                        <Typography
+                          variant="subtitle2"
+                          gutterBottom
+                          color="primary"
+                        >
+                          Added By : {user.addedBy || "NA"}
+                        </Typography>
+
+                        {/* @ts-ignore */}
+                      </CardContent>
+                    </Card>
+                    <br></br>
+                    {user.consumerNo ? null : (
                       <Typography
-                        variant="subtitle2"
                         gutterBottom
+                        variant="h5"
+                        component="h2"
                         color="primary"
                       >
-                        Added By : {user.addedBy || "NA"}
+                        This Customer don't have any consumer Number
                       </Typography>
+                    )}
+                  </Grid>
+                  {user.installtatus && (
+                    <Container maxWidth="md">
+                      <Grid
+                        container
+                        spacing={4}
+                      >
+                        {(() => {
+                          if (findRole() === "superadmin") {
+                            return (
+                              <div>
+                                {" "}
+                                <Grid item xs={12} md={12}>
+                                  <label htmlFor="upload-button1">
+                                    {install.preview ? (
+                                      <img
+                                        src={install.preview}
+                                        alt="install"
+                                        width="300"
+                                        height="300"
+                                      />
+                                    ) : null}
+                                  </label>
+                                  <Typography>
+                                    Installation Letter Photo :
+                                  </Typography>
+                                  <input
+                                    type="file"
+                                    id="upload-button1"
+                                    // style={{ display: "none" }}
+                                    onChange={handleChangeInstall}
+                                    accept="image/*"
+                                  />
+                                  <br />
+                                  <span style={{ color: "red" }}>{errorI}</span>
+                                  <br />
+                                  <br />
+                                  {installb ? (
+                                    <div>
+                                      <Button
+                                        size="medium"
+                                        variant="contained"
+                                        color="primary"
+                                        style={{ backgroundColor: "#834bff" }}
+                                        onClick={(e) => {
+                                          installUpload(e, user.mainAadhaar);
+                                        }}
+                                      >
+                                        Submit Installation Photo
+                                      </Button>
+                                      <Button
+                                        size="medium"
+                                        variant="contained"
+                                        color="inherit"
+                                        onClick={installRemoveImage}
+                                      >
+                                        Reset Photo
+                                      </Button>
+                                    </div>
+                                  ) : null}
+                                </Grid>
+                              </div>
+                            );
+                          }
 
-                      {/* @ts-ignore */}
-                    </CardContent>
-                  </Card>
-                  <br></br>
-                  {user.consumerNo ? null : (
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      component="h2"
-                      color="primary"
-                    >
-                      This Customer don't have any consumer Number
-                    </Typography>
+                          if (
+                            user.installtatus != "Complete" &&
+                            findRole() === "admin"
+                          ) {
+                            return (
+                              <div>
+                                <Grid item xs={12} md={12}>
+                                  <label htmlFor="upload-button1">
+                                    {install.preview ? (
+                                      <img
+                                        src={install.preview}
+                                        alt="install"
+                                        width="300"
+                                        height="300"
+                                      />
+                                    ) : null}
+                                  </label>
+                                  <Typography>
+                                    Installation Letter Photo:
+                                  </Typography>
+                                  <input
+                                    type="file"
+                                    id="upload-button1"
+                                    // style={{ display: "none" }}
+                                    onChange={handleChangeInstall}
+                                    accept="image/*"
+                                  />
+                                  <br />
+                                  <span style={{ color: "red" }}>{errorI}</span>
+                                  <br />
+                                  <br />
+                                  {installb ? (
+                                    <div>
+                                      <Button
+                                        size="medium"
+                                        variant="contained"
+                                        color="primary"
+                                        style={{ backgroundColor: "#834bff" }}
+                                        onClick={(e) => {
+                                          installUpload(e, user.mainAadhaar);
+                                        }}
+                                      >
+                                        Submit Installation Photo
+                                      </Button>
+                                      <Button
+                                        size="medium"
+                                        variant="contained"
+                                        color="inherit"
+                                        onClick={installRemoveImage}
+                                      >
+                                        Reset Photo
+                                      </Button>
+                                    </div>
+                                  ) : null}
+                                </Grid>
+                              </div>
+                            );
+                          }
+
+                          if (user.installtatus === "Complete") {
+                            return (
+                              <div style={{ marginLeft:"0.3rem" }}>
+                                <Typography color="primary">
+                                  Installation photo already submitted !
+                                </Typography>
+                              </div>
+                            );
+                          }
+                        })()}
+                        <br />
+                        <Grid item xs={12} sm={12} md={12}>
+                          <br />
+                          <label htmlFor="upload-button2">
+                            {satis.preview ? (
+                              <img
+                                src={satis.preview}
+                                alt="dummy"
+                                width="300"
+                                height="300"
+                              />
+                            ) : null}
+                          </label>
+                          <Typography>Satisfaction Letter Photo :</Typography>
+                          <input
+                            type="file"
+                            id="upload-button2"
+                            // style={{ display: "none" }}
+                            onChange={handleChangeSatis}
+                            accept="image/*"
+                          />
+                          <br />
+                          <span style={{ color: "red" }}>{errorS}</span>
+                          <br />
+                          <br />
+                          {satisb ? (
+                            <div>
+                              <Button
+                                size="medium"
+                                variant="contained"
+                                color="primary"
+                                style={{ backgroundColor: "#f44336" }}
+                                onClick={(e) => {
+                                  satisUpload(e, user.mainAadhaar);
+                                }}
+                              >
+                                Submit Satisfaction Photo
+                              </Button>
+                              <Button
+                                size="medium"
+                                variant="contained"
+                                color="inherit"
+                                onClick={satisRemoveImage}
+                              >
+                                Reset Photo
+                              </Button>
+                            </div>
+                          ) : null}
+                        </Grid>
+
+                        <Grid item xs={12} sm={12} md={12}>
+                          <br />
+                          <label htmlFor="upload-button3">
+                            {other.preview ? (
+                              <img
+                                src={other.preview}
+                                alt="dummy"
+                                width="300"
+                                height="300"
+                              />
+                            ) : null}
+                          </label>
+                          <Typography>Other Letter Photo :</Typography>
+                          <input
+                            type="file"
+                            id="upload-button3"
+                            // style={{ display: "none" }}
+                            onChange={handleChangeOther}
+                            accept="image/*"
+                          />
+                          <br />
+                          <span style={{ color: "red" }}>{errorO}</span>
+                          <br />
+                          <br />
+                          {otherb ? (
+                            <div>
+                              <Button
+                                variant="contained"
+                                style={{ backgroundColor: "#8bc34a" }}
+                                color="primary"
+                                onClick={(e) => {
+                                  othereUpload(e, user.mainAadhaar);
+                                }}
+                              >
+                                Submit Other Photo
+                              </Button>
+                              <Button
+                                size="medium"
+                                variant="contained"
+                                color="inherit"
+                                onClick={otherRemoveImage}
+                              >
+                                Reset Photo
+                              </Button>
+                            </div>
+                          ) : null}
+                        </Grid>
+                      </Grid>
+                    </Container>
                   )}
                 </Grid>
-                {user.installtatus && (
-                  <Container maxWidth="md">
-                    <Grid container spacing={4} style={{ marginRight: "1rem" }}>
-                      {(() => {
-                        if (findRole() === "superadmin") {
-                          return (
-                            <div>
-                              {" "}
-                              <Grid item xs={12} md={12}>
-                                <label htmlFor="upload-button1">
-                                  {install.preview ? (
-                                    <img
-                                      src={install.preview}
-                                      alt="install"
-                                      width="300"
-                                      height="300"
-                                    />
-                                  ) : null}
-                                </label>
-                                <Typography>
-                                  Installation Letter Photo :
-                                </Typography>
-                                <input
-                                  type="file"
-                                  id="upload-button1"
-                                  // style={{ display: "none" }}
-                                  onChange={handleChangeInstall}
-                                  accept="image/*"
-                                />
-                                <br />
-                                <span style={{ color: "red" }}>{errorI}</span>
-                                <br />
-                                <br />
-                                {installb ? (
-                                  <div>
-                                    <Button
-                                      size="medium"
-                                      variant="contained"
-                                      color="primary"
-                                      style={{ backgroundColor: "#834bff" }}
-                                      onClick={(e) => {
-                                        installUpload(e, user.mainAadhaar);
-                                      }}
-                                    >
-                                      Submit Installation Photo
-                                    </Button>
-                                    <Button
-                                      size="medium"
-                                      variant="contained"
-                                      color="inherit"
-                                      onClick={installRemoveImage}
-                                    >
-                                      Reset Photo
-                                    </Button>
-                                  </div>
-                                ) : null}
-                              </Grid>
-                            </div>
-                          );
-                        }
-
-                        if (
-                          user.installtatus != "Complete" &&
-                          findRole() === "admin"
-                        ) {
-                          return (
-                            <div>
-                              <Grid item xs={12} md={12}>
-                                <label htmlFor="upload-button1">
-                                  {install.preview ? (
-                                    <img
-                                      src={install.preview}
-                                      alt="install"
-                                      width="300"
-                                      height="300"
-                                    />
-                                  ) : null}
-                                </label>
-                                <Typography>
-                                  Installation Letter Photo:
-                                </Typography>
-                                <input
-                                  type="file"
-                                  id="upload-button1"
-                                  // style={{ display: "none" }}
-                                  onChange={handleChangeInstall}
-                                  accept="image/*"
-                                />
-                                <br />
-                                <span style={{ color: "red" }}>{errorI}</span>
-                                <br />
-                                <br />
-                                {installb ? (
-                                  <div>
-                                    <Button
-                                      size="medium"
-                                      variant="contained"
-                                      color="primary"
-                                      style={{ backgroundColor: "#834bff" }}
-                                      onClick={(e) => {
-                                        installUpload(e, user.mainAadhaar);
-                                      }}
-                                    >
-                                      Submit Installation Photo
-                                    </Button>
-                                    <Button
-                                      size="medium"
-                                      variant="contained"
-                                      color="inherit"
-                                      onClick={installRemoveImage}
-                                    >
-                                      Reset Photo
-                                    </Button>
-                                  </div>
-                                ) : null}
-                              </Grid>
-                            </div>
-                          );
-                        }
-
-                        if (user.installtatus === "Complete") {
-                          return (
-                            <div>
-                              <Typography color="primary">
-                                Installation photo already submitted !
-                              </Typography>
-                            </div>
-                          );
-                        }
-                      })()}
-                      <br />
-                      <Grid item xs={12} sm={12} md={12}>
-                        <br />
-                        <label htmlFor="upload-button2">
-                          {satis.preview ? (
-                            <img
-                              src={satis.preview}
-                              alt="dummy"
-                              width="300"
-                              height="300"
-                            />
-                          ) : null}
-                        </label>
-                        <Typography>Satisfaction Letter Photo :</Typography>
-                        <input
-                          type="file"
-                          id="upload-button2"
-                          // style={{ display: "none" }}
-                          onChange={handleChangeSatis}
-                          accept="image/*"
-                        />
-                        <br />
-                        <span style={{ color: "red" }}>{errorS}</span>
-                        <br />
-                        <br />
-                        {satisb ? (
-                          <div>
-                            <Button
-                              size="medium"
-                              variant="contained"
-                              color="primary"
-                              style={{ backgroundColor: "#f44336" }}
-                              onClick={(e) => {
-                                satisUpload(e, user.mainAadhaar);
-                              }}
-                            >
-                              Submit Satisfaction Photo
-                            </Button>
-                            <Button
-                              size="medium"
-                              variant="contained"
-                              color="inherit"
-                              onClick={satisRemoveImage}
-                            >
-                              Reset Photo
-                            </Button>
-                          </div>
-                        ) : null}
-                      </Grid>
-
-                      <Grid item xs={12} sm={12} md={12}>
-                        <br />
-                        <label htmlFor="upload-button3">
-                          {other.preview ? (
-                            <img
-                              src={other.preview}
-                              alt="dummy"
-                              width="300"
-                              height="300"
-                            />
-                          ) : null}
-                        </label>
-                        <Typography>Other Letter Photo :</Typography>
-                        <input
-                          type="file"
-                          id="upload-button3"
-                          // style={{ display: "none" }}
-                          onChange={handleChangeOther}
-                          accept="image/*"
-                        />
-                        <br />
-                        <span style={{ color: "red" }}>{errorO}</span>
-                        <br />
-                        <br />
-                        {otherb ? (
-                          <div>
-                            <Button
-                              variant="contained"
-                              style={{ backgroundColor: "#8bc34a" }}
-                              color="primary"
-                              onClick={(e) => {
-                                othereUpload(e, user.mainAadhaar);
-                              }}
-                            >
-                              Submit Other Photo
-                            </Button>
-                            <Button
-                              size="medium"
-                              variant="contained"
-                              color="inherit"
-                              onClick={otherRemoveImage}
-                            >
-                              Reset Photo
-                            </Button>
-                          </div>
-                        ) : null}
-                      </Grid>
-                    </Grid>
-                  </Container>
-                )}
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </div>
-      <div>
-        <Container maxWidth="md">
-          {/* End hero unit */}
-          <Grid container spacing={4}>
-            {users.map((user, i) => (
-              <Grid item key={i} xs={12} sm={12} md={12} display="flex">
-                <div style={{ width: "400px" }}>
-                  <Typography component="h2" variant="h5">
-                    Installation Letter
-                  </Typography>
-                  <br></br>
-                  {user.InstalationLetter ? (
-                    <div>
-                      <img src={user.InstalationLetter} alt="new" />
-                      <a href={user.InstalationLetter} target="_blank">
-                        Download
-                      </a>
-                    </div>
-                  ) : (
-                    "No Image found"
-                  )}
-                </div>
-                <div>
-                  <Typography component="h2" variant="h5">
-                    Satisfaction Letter
-                  </Typography>
-                  <br></br>
-                  {user.satisfactionLetter ? (
-                    <div>
-                      <img src={user.satisfactionLetter} alt="new" />
-                      <a href={user.satisfactionLetter} target="_blank">
-                        Download
-                      </a>
-                    </div>
-                  ) : (
-                    "No Image found"
-                  )}
-                </div>
-                <div>
-                  <Typography component="h2" variant="h5">
-                    Other Doc
-                  </Typography>
-                  <br></br>
-                  {user.otherLetter ? (
-                    <div>
-                      <img src={user.otherLetter} alt="new" />
-                      <a href={user.otherLetter} target="_blank">
-                        Download
-                      </a>
-                    </div>
-                  ) : (
-                    "No Image found"
-                  )}
-                </div>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </div>
-      {/* End footer */}
-    </React.Fragment>
+              ))}
+            </Grid>
+          </Container>
+        </div>
+        <div>
+          <Container maxWidth="md">
+            {/* End hero unit */}
+            <Grid container spacing={4}>
+              {users.map((user, i) => (
+                <Grid item key={i} xs={12} sm={12} md={12} display="flex">
+                  <div style={{ width: "400px" }}>
+                    <Typography component="h2" variant="h5">
+                      Installation Letter
+                    </Typography>
+                    <br></br>
+                    {user.InstalationLetter ? (
+                      <div>
+                        <img src={user.InstalationLetter} alt="new" />
+                        <a href={user.InstalationLetter} target="_blank">
+                          Download
+                        </a>
+                      </div>
+                    ) : (
+                      "No Image found"
+                    )}
+                  </div>
+                  <div>
+                    <Typography component="h2" variant="h5">
+                      Satisfaction Letter
+                    </Typography>
+                    <br></br>
+                    {user.satisfactionLetter ? (
+                      <div>
+                        <img src={user.satisfactionLetter} alt="new" />
+                        <a href={user.satisfactionLetter} target="_blank">
+                          Download
+                        </a>
+                      </div>
+                    ) : (
+                      "No Image found"
+                    )}
+                  </div>
+                  <div>
+                    <Typography component="h2" variant="h5">
+                      Other Doc
+                    </Typography>
+                    <br></br>
+                    {user.otherLetter ? (
+                      <div>
+                        <img src={user.otherLetter} alt="new" />
+                        <a href={user.otherLetter} target="_blank">
+                          Download
+                        </a>
+                      </div>
+                    ) : (
+                      "No Image found"
+                    )}
+                  </div>
+                </Grid>
+              ))}
+            </Grid>
+          </Container>
+        </div>
+      </Container>
+    </div>
   );
 }

@@ -2,7 +2,6 @@ export const ROUTES = {
   root: "/",
   404: "*",
   login: "/login",
-  dashboard: "/dashboard",
   company: "/company",
   companySetting: "/company-setting",
   companyUsers: "/company/:companyId/user",
@@ -12,4 +11,7 @@ export const ROUTES = {
   dailyReport: "/report",
   fingerPrint: "/trash",
   imageUpload: "/uploads",
+  connection: "/connection",
+  account:"/account"
+
 };

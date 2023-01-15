@@ -31,13 +31,9 @@ const MENU_OPTIONS = [
   {
     label: 'Profile',
     icon: 'eva:person-fill',
-    linkTo: '#',
+    linkTo: '/account',
   },
-  {
-    label: 'Settings',
-    icon: 'eva:settings-2-fill',
-    linkTo: '#',
-  },
+
 ];
 
 // ----------------------------------------------------------------------
@@ -68,17 +64,17 @@ export function AccountPopover() {
             p: 0,
             ...(open
               ? {
-                  '&:before': {
-                    zIndex: 1,
-                    content: "''",
-                    width: '100%',
-                    height: '100%',
-                    borderRadius: '50%',
-                    position: 'absolute',
-                    bgcolor: (theme: ITheme) =>
-                      alpha(theme.palette.grey[900], 0.8),
-                  },
-                }
+                '&:before': {
+                  zIndex: 1,
+                  content: "''",
+                  width: '100%',
+                  height: '100%',
+                  borderRadius: '50%',
+                  position: 'absolute',
+                  bgcolor: (theme: ITheme) =>
+                    alpha(theme.palette.grey[900], 0.8),
+                },
+              }
               : {}),
           } as any
         }>

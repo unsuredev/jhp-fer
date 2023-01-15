@@ -49,7 +49,7 @@ export function getToken() {
   return res;
 }
 
-export const getUserName = () => {
+ const getUserName = () => {
   let token: any = localStorage.getItem(tokenKey);
   var decoded = jwt_decode(token);
   //@ts-ignore
@@ -59,4 +59,27 @@ export const getUserName = () => {
   }
 };
 
-export { httpClient };
+ const getRole = () => {
+  let token: any = localStorage.getItem(tokenKey);
+
+  var decoded = jwt_decode(token);
+  //@ts-ignore
+  let { role } = decoded;
+  return role;
+};
+
+const getUser = () => {
+  let token: any = localStorage.getItem("jhp_token");
+  var decoded = jwt_decode(token);
+  //@ts-ignore
+  let { role } = decoded;
+
+  if (role === "employee") {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+
+export { httpClient, getRole , getUserName ,getUser };

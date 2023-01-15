@@ -18,7 +18,7 @@ const getIcon = (name: string) => (
 export const systemUserNavConfig: INavConfig[] = [
   {
     title: "dashboard",
-    path: ROUTES.dashboard,
+    path: ROUTES.root,
     icon: getIcon("eva:pie-chart-2-fill"),
   },
   {
@@ -31,7 +31,7 @@ export const systemUserNavConfig: INavConfig[] = [
 export const userNavConfig: INavConfig[] = [
   {
     title: "dashboard",
-    path: ROUTES.dashboard,
+    path: ROUTES.root,
     icon: getIcon("eva:pie-chart-2-fill"),
   },
   {
@@ -56,7 +56,7 @@ export const userNavConfig: INavConfig[] = [
   },
   {
     title: "Salnes & Connection",
-    path: "/uploads2",
+    path: "/connection",
     icon: getIcon("fluent:arrow-growth-20-filled"),
   },
   {

@@ -101,7 +101,8 @@ export function Sidebar({ isOpenSidebar, onCloseSidebar }: ISidebar) {
             <Avatar src={accountPhotoURL} alt="photoURL" />
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2" sx={{ color: "text.primary" }}>
-                {"Jamal"} {userGreetings()}
+                {userGreetings()}
+                {"Jamal"}
               </Typography>
               <Typography variant="body2" sx={{ color: "text.secondary" }}>
                 {auth.user?.type}

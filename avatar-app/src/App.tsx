@@ -12,6 +12,8 @@ import { UserPage } from "pages/UserPage";
 import { DailyReportPage } from "pages/DailyReportPage";
 import { FingerPrintPage } from "pages/FingerprintPage";
 import { ImageUploadPage } from "pages/ImageUploadPage";
+import { ConnectionPage } from "pages/ConnectionPage";
+import AccountPage from 'pages/AccountPage'
 
 import { ROUTES } from "definitions/constant/routes";
 
@@ -32,7 +34,7 @@ function App() {
     const isExpired = isTokenExpired(auth.token);
     const pathName = location.pathname;
     if (!isExpired) {
-      navigate(pathName === ROUTES.login ? ROUTES.dashboard : pathName, {
+      navigate(pathName === ROUTES.login ? ROUTES.root : pathName, {
         replace: true,
       });
     } else navigate(ROUTES.login, { replace: true });
@@ -43,11 +45,17 @@ function App() {
       <header className="App-header">
         <Routes>
           <Route path={ROUTES.root} element={<Layout />}>
-            <Route path={ROUTES.dashboard} element={<DashboardPage />} />
+            <Route path={ROUTES.root} element={<DashboardPage />} />
             <Route path={ROUTES.user} element={<UserPage />} />
             <Route path={ROUTES.fingerPrint} element={<FingerPrintPage />} />
             <Route path={ROUTES.dailyReport} element={<DailyReportPage />} />
             <Route path={ROUTES.imageUpload} element={<ImageUploadPage />} />
+            <Route path={ROUTES.connection} element={<ConnectionPage />} />
+            <Route path={ROUTES.account} element={<AccountPage />} />
+
+
+
+
           </Route>
           <Route path={ROUTES[404]} element={<Page404 />} />
           <Route path={ROUTES.login} element={<LoginPage />} />
