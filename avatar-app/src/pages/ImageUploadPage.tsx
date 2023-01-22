@@ -1,5 +1,5 @@
 import { Page } from "components/Page";
-import ImageUpload from "../features/Uploads/ImageUpload";
+import ImageUpload from "../features/uploads/ImageUpload";
 
 export const ImageUploadPage = () => {
   return (

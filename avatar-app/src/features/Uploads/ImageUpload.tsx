@@ -13,7 +13,6 @@ import {
 } from "@mui/material";
 import { BASE_URL } from "../../config/constant";
 import jwt_decode from "jwt-decode";
-import moment from "moment";
 import NewReleasesIcon from "@mui/icons-material/NewReleases";
 import FiberNewIcon from "@mui/icons-material/FiberNew";
 import IconButton from "@material-ui/core/IconButton";
@@ -582,7 +581,7 @@ export default function ImageUpload() {
 
                           if (user.installtatus === "Complete") {
                             return (
-                              <div style={{ marginLeft:"0.3rem" }}>
+                              <div style={{ marginLeft: "0.3rem" }}>
                                 <Typography color="primary">
                                   Installation photo already submitted !
                                 </Typography>

@@ -9,17 +9,13 @@ import {
   Typography
 } from '@mui/material';
 
-const user = {
-  avatar: '/static/images/avatars/avatar_6.png',
-  city: 'Los Angeles',
-  country: 'USA',
-  jobTitle: 'Senior Developer',
-  name: 'Katarina Smith',
-  timezone: 'GTM-7'
-};
+import moment from "moment";
+
 
 export const AccountProfile = (props: any) => (
-  <Card {...props}>
+
+
+  < Card {...props}>
     <CardContent>
       <Box
         sx={{
@@ -29,7 +25,7 @@ export const AccountProfile = (props: any) => (
         }}
       >
         <Avatar
-          src={user.avatar}
+          src={props.user.profile_url}
           sx={{
             height: 64,
             mb: 2,
@@ -41,19 +37,20 @@ export const AccountProfile = (props: any) => (
           gutterBottom
           variant="h5"
         >
-          {user.name}
+          {props.user.name}
         </Typography>
         <Typography
           color="textSecondary"
           variant="body2"
         >
-          {`${user.city} ${user.country}`}
+          {props.user.city}
         </Typography>
         <Typography
           color="textSecondary"
           variant="body2"
         >
-          {user.timezone}
+          Last login: {moment(props.user.last_login_timestamp).format('LLL')}
+
         </Typography>
       </Box>
     </CardContent>
@@ -67,5 +64,5 @@ export const AccountProfile = (props: any) => (
         Upload picture
       </Button>
     </CardActions>
-  </Card>
+  </Card >
 );

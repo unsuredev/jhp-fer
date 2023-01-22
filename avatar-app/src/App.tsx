@@ -13,7 +13,8 @@ import { DailyReportPage } from "pages/DailyReportPage";
 import { FingerPrintPage } from "pages/FingerprintPage";
 import { ImageUploadPage } from "pages/ImageUploadPage";
 import { ConnectionPage } from "pages/ConnectionPage";
-import AccountPage from 'pages/AccountPage'
+import { AccountPage } from 'pages/AccountPage'
+import { AgentPage } from 'pages/AgentPage'
 
 import { ROUTES } from "definitions/constant/routes";
 
@@ -40,6 +41,8 @@ function App() {
     } else navigate(ROUTES.login, { replace: true });
   }, [auth.token]);
 
+
+
   return (
     <div className="App">
       <header className="App-header">
@@ -52,7 +55,7 @@ function App() {
             <Route path={ROUTES.imageUpload} element={<ImageUploadPage />} />
             <Route path={ROUTES.connection} element={<ConnectionPage />} />
             <Route path={ROUTES.account} element={<AccountPage />} />
-
+            <Route path={ROUTES.agent} element={<AgentPage />} />
 
 
 

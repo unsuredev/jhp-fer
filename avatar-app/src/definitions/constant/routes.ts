@@ -12,6 +12,7 @@ export const ROUTES = {
   fingerPrint: "/trash",
   imageUpload: "/uploads",
   connection: "/connection",
-  account:"/account"
+  account:"/account",
+  agent:"/agent"
 
 };

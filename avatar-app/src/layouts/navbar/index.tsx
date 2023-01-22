@@ -6,8 +6,7 @@ import Iconify from '../../components/Iconify';
 //
 import Searchbar from './Searchbar';
 import { AccountPopover } from './AccountPopover';
-import { NotificationsPopover } from './NotificationPopover';
-import { LanguagePopover } from './LanguagePopover';
+import { LanguageChange } from './LanguagePopover';
 
 // ----------------------------------------------------------------------
 
@@ -36,6 +35,7 @@ const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
 // ----------------------------------------------------------------------
 
 export function Navbar({ onOpenSidebar }: { onOpenSidebar: any }) {
+
   return (
     <RootStyle>
       <ToolbarStyle>
@@ -52,11 +52,11 @@ export function Navbar({ onOpenSidebar }: { onOpenSidebar: any }) {
           direction='row'
           alignItems='center'
           spacing={{ xs: 0.5, sm: 1.5 }}>
-          <LanguagePopover />
-          <NotificationsPopover />
+          <LanguageChange />
           <AccountPopover />
         </Stack>
       </ToolbarStyle>
+
     </RootStyle>
   );
 }

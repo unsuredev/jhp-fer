@@ -62,9 +62,8 @@ export function Sidebar({ isOpenSidebar, onCloseSidebar }: ISidebar) {
   const [today, setDate] = useState(new Date());
 
   const hour = today.getHours();
-  const wish = `Good ${
-    (hour < 12 && "Morning") || (hour < 17 && "Afternoon") || "Evening"
-  }, `;
+  const wish = `Good ${(hour < 12 && "Morning") || (hour < 17 && "Afternoon") || "Evening"
+    }, `;
   const userGreetings = () => {
     return (
       <div>
@@ -100,9 +99,11 @@ export function Sidebar({ isOpenSidebar, onCloseSidebar }: ISidebar) {
           <AccountStyle>
             <Avatar src={accountPhotoURL} alt="photoURL" />
             <Box sx={{ ml: 2 }}>
-              <Typography variant="subtitle2" sx={{ color: "text.primary" }}>
-                {userGreetings()}
-                {"Jamal"}
+
+              <Typography variant="subtitle2" sx={{ color: "primary" }}>
+                <span style={{ color: "black" }}> {userGreetings()}</span>
+
+                Jamal
               </Typography>
               <Typography variant="body2" sx={{ color: "text.secondary" }}>
                 {auth.user?.type}

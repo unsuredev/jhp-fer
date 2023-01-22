@@ -1,6 +1,5 @@
 import { GridColDef } from "@mui/x-data-grid";
 import { useAppDispatch, useAppSelector } from "app/hooks";
-import { selectAuth } from "app/services/auth/authSlice";
 import { searchUsersAsync, selectUser } from "app/services/users/userSlice";
 import { ActionMenu } from "components/ActionMenu";
 import { Drawer } from "components/Drawer";
@@ -45,7 +44,7 @@ export const UserCom = () => {
               result.push("Employee");
             }
           } else {
-            result = ["Unknown"];
+            result = ["Manager"];
           }
           return result.join(", ");
         },
@@ -111,9 +110,9 @@ export const UserCom = () => {
           pathname === ROUTES.user
             ? [{ link: "#", title: "User" }]
             : [
-                { link: ROUTES.company, title: "Company" },
-                { link: "#", title: "User" },
-              ]
+              { link: ROUTES.company, title: "Company" },
+              { link: "#", title: "User" },
+            ]
         }
         onBtnClick={() => {
           setOpenDrawer(true);

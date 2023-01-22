@@ -40,8 +40,8 @@ export const userNavConfig: INavConfig[] = [
     icon: getIcon("eva:people-fill"),
   },
   {
-    title: "Customer",
-    path: "/customer1",
+    title: "Agents",
+    path: "/agent",
     icon: getIcon("fa-solid:users"),
   },
   {
@@ -55,7 +55,7 @@ export const userNavConfig: INavConfig[] = [
     icon: getIcon("material-symbols:cloud-upload"),
   },
   {
-    title: "Salnes & Connection",
+    title: "Sales and Connection",
     path: "/connection",
     icon: getIcon("fluent:arrow-growth-20-filled"),
   },

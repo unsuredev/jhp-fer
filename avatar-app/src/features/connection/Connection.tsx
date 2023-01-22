@@ -1,12 +1,8 @@
-import React, { useState, useMemo } from "react";
-import { GridColDef } from "@mui/x-data-grid";
+import React from "react";
+import { BASE_URL } from "../../config/constant";
 import axios from "axios";
-import { BASE_URL } from "../config/constant";
-import VisibilityIcon from "@mui/icons-material/Visibility";
+
 import {
-  Box,
-  TableHead,
-  TableRow,
   List,
   ListItem,
   CardMedia,
@@ -15,16 +11,12 @@ import {
   Card,
   CardActions,
   CardContent,
-  TableBody,
   MenuItem,
   InputLabel,
   Select,
   Divider,
-  TableCell,
   Button,
-  Link,
   TextField,
-  Table,
   DialogActions,
   DialogContent,
   Dialog,
@@ -36,23 +28,15 @@ import DataGrid from "components/table/DataGrid";
 import { getToken } from "app/services/UtilServices";
 
 import IconButton, { IconButtonProps } from '@mui/material/IconButton';
-
 import OutlinedInput from '@mui/material/OutlinedInput';
 import { styled } from '@mui/material/styles';
 import CardHeader from '@mui/material/CardHeader';
 import Collapse from '@mui/material/Collapse';
-import Avatar from '@mui/material/Avatar';
-import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-
-
 import CreateIcon from "@mui/icons-material/Create";
 import FormControl from "@material-ui/core/FormControl";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import jwt_decode from "jwt-decode";
 import { getUserName, getRole } from "utils/UtilService";
 
 
@@ -432,25 +416,23 @@ const Connection = () => {
   };
 
   const columns = [
-    { title: "AGENT", field: "agent" },
-    { title: "TOTAL CONNECTION ", field: "totalConnection", type: "numeric" },
-    { title: "LOAD PAID", field: "load", type: "numeric" },
-    { title: "REGULATOR PAID", field: "regulator" },
-    { title: "PIPE PAID", field: "pipe" },
-    { title: "LIGHT PAID", field: "paidLight" },
-    { title: "BPL OVEN", field: "bplOven" },
-    { title: "NON HP OVEN", field: "nonHpOven" },
-    { title: "HP OVEN", field: "hpOven" },
-    { title: "OVEN DUE", field: "bplOven" },
-    { title: "PAID AMOUNT ", field: "paidAmount" },
-    { title: "REMARKS ", field: "remarks" },
+    { headerName: 'AGENT', field: 'agent' },
+    { headerName: "TOTAL CONNECTION ", field: "totalConnection", type: 'numeric' },
+    { headerName: "LOAD PAID", field: "load", type: 'numeric' },
+    { headerName: "REGULATOR PAID", field: "regulator" },
+    { headerName: "PIPE PAID", field: "pipe" },
+    { headerName: "LIGHT PAID", field: "paidLight" },
+    { headerName: "BPL OVEN", field: "bplOven" },
+    { headerName: "NON HP OVEN", field: "nonHpOven" },
+    { headerName: "HP OVEN", field: "hpOven" },
+    { headerName: "OVEN DUE", field: "bplOven" },
+    { headerName: "PAID AMOUNT ", field: "paidAmount" },
+    { headerName: "REMARKS ", field: "remarks" },
     {
-      title: "DATE ",
-      field: "updatedAt",
-      type: "date",
-      dateSetting: { locale: "ko-KR" },
-    },
-  ];
+      headerName: "DATE ", field: "updatedAt", type: "date",
+      dateSetting: { locale: "ko-KR" }
+    }
+  ]
 
   return (
     <React.Fragment>
@@ -1265,26 +1247,7 @@ const Connection = () => {
                 <p>Please...</p> <CircularProgress />{" "}
               </div>
             ) : (
-              <div>
-                Table
-              </div>
-              // <MaterialTable
-              //   title="Jaman Hp Sales History"
-              //   data={data}
-              //   //@ts-ignore
-              //   columns={columns}
-              //   options={{
-              //     exportButton: true,
-              //     exportAllData: true,
-              //     filtering: true,
-              //     sorting: true,
-              //     pageSizeOptions: [5, 20, 50, 100, 200, 500],
-              //     headerStyle: {
-              //       backgroundColor: "#01579b",
-              //       color: "#FFF",
-              //     },
-              //   }}
-              // />
+              <DataGrid columns={columns} rows={data} />
             )}
           </Container>
         ) : null}

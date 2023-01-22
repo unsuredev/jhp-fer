@@ -30,9 +30,11 @@
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(10px);
   }
+
   100% {
     transform: translateY(0px);
   }
@@ -41,4 +43,12 @@
 .ph-16 {
   padding-left: 16px;
   padding-right: 16px;
+}
+
+.goog-logo-link {
+  display: none !important;
+}
+
+.goog-te-gadget {
+  color: transparent !important;
 }

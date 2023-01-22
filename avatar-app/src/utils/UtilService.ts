@@ -81,5 +81,13 @@ const getUser = () => {
   }
 };
 
+export const findUserId = () => {
+  let token: any = localStorage.getItem("access_token");
+  var decoded = jwt_decode(token);
+  //@ts-ignore
+  let { user_id } = decoded;
+  return user_id
+}
+
 
 export { httpClient, getRole , getUserName ,getUser };
