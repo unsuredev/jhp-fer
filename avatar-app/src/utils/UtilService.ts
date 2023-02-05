@@ -49,7 +49,7 @@ export function getToken() {
   return res;
 }
 
- const getUserName = () => {
+const getUserName = () => {
   let token: any = localStorage.getItem(tokenKey);
   var decoded = jwt_decode(token);
   //@ts-ignore
@@ -59,7 +59,7 @@ export function getToken() {
   }
 };
 
- const getRole = () => {
+const getRole = () => {
   let token: any = localStorage.getItem(tokenKey);
 
   var decoded = jwt_decode(token);
@@ -90,4 +90,20 @@ export const findUserId = () => {
 }
 
 
-export { httpClient, getRole , getUserName ,getUser };
+const getUser2 = () => {
+  let token: any = localStorage.getItem("access_token");
+
+  var decoded = jwt_decode(token);
+  //@ts-ignore
+  let { role } = decoded;
+  if (role === "superadmin") {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+
+
+
+export { httpClient, getRole, getUserName, getUser };

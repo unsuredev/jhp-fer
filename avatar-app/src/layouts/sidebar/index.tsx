@@ -102,8 +102,10 @@ export function Sidebar({ isOpenSidebar, onCloseSidebar }: ISidebar) {
 
               <Typography variant="subtitle2" sx={{ color: "primary" }}>
                 <span style={{ color: "black" }}> {userGreetings()}</span>
+                {/* 
+// @ts-ignore */}
 
-                Jamal
+                {auth.user?.name}
               </Typography>
               <Typography variant="body2" sx={{ color: "text.secondary" }}>
                 {auth.user?.type}

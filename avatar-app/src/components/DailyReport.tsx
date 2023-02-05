@@ -105,7 +105,6 @@ const DailyReport = () => {
         }
       );
       if (result && result.data) {
-        console.log("users", result.data.data);
         setUsers(result.data.data);
         setLoading(false);
       }

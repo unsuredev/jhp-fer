@@ -45,10 +45,8 @@
   padding-right: 16px;
 }
 
-.goog-logo-link {
-  display: none !important;
-}
 
-.goog-te-gadget {
-  color: transparent !important;
+
+.google_translate_element {
+  display: none;
 }

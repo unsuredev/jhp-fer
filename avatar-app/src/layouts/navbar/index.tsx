@@ -6,7 +6,6 @@ import Iconify from '../../components/Iconify';
 //
 import Searchbar from './Searchbar';
 import { AccountPopover } from './AccountPopover';
-import { LanguageChange } from './LanguagePopover';
 
 // ----------------------------------------------------------------------
 
@@ -32,6 +31,28 @@ const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
   },
 }));
 
+//google translate
+const googleTranslateElementInit = () => {
+  //@ts-ignore
+  new window.google.translate.TranslateElement(
+    {
+      pageLanguage: "en",
+      autoDisplay: false,
+      includedLanguages: "hi,bn"
+    },
+    "google_translate_element"
+  );
+};
+
+var addScript = document.createElement("script");
+addScript.setAttribute(
+  "src",
+  "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+);
+document.body.appendChild(addScript);
+//@ts-ignore
+window.googleTranslateElementInit = googleTranslateElementInit;
+
 // ----------------------------------------------------------------------
 
 export function Navbar({ onOpenSidebar }: { onOpenSidebar: any }) {
@@ -47,13 +68,13 @@ export function Navbar({ onOpenSidebar }: { onOpenSidebar: any }) {
 
         <Searchbar />
         <Box sx={{ flexGrow: 1 }} />
-
         <Stack
           direction='row'
           alignItems='center'
           spacing={{ xs: 0.5, sm: 1.5 }}>
-          <LanguageChange />
+          <div id="google_translate_element"></div>
           <AccountPopover />
+
         </Stack>
       </ToolbarStyle>
 

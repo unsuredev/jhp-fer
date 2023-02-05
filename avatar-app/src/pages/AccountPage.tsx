@@ -15,11 +15,13 @@ import axios from "axios";
 import { findUserId, getToken } from 'utils/UtilService';
 import { AccountProfile } from 'features/account/AccountProfile';
 import toast from "react-hot-toast";
+import { useAppSelector } from 'app/hooks';
 
-
+import { loadUser, selectAuth } from "app/services/auth/authSlice";
 
 export const AccountPage = (props: any) => {
 
+    const auth = useAppSelector(selectAuth);
     const [user, setUser] = useState({
         "user_id": findUserId(),
         name: "",
@@ -44,37 +46,15 @@ export const AccountPage = (props: any) => {
 
     React.useEffect(() => {
         document.title = "Jaman HP GAS | Profile  "
-        fetchUser()
-
+        console.log("user", auth.user)
+        if (auth.user) {
+            //@ts-ignore
+            setUser(auth.user)
+        }
     }, []);
 
 
-    const fetchUser = async () => {
-        try {
-            const result = await axios.post(BASE_URL + "user/find",
-                {
-                    "user_id": findUserId()
-                },
-                {
-                    headers: {
-                        encryption: false,
-                        access_token: getToken()
-                    }
-                })
-            if (result.data && result.data != null) {
-                setUser(result.data.data)
 
-            }
-            else {
-                // showToast(result.data.message, "error");
-            }
-        } catch (error) {
-            console.log(error)
-            //@ts-ignore
-            toast.success(error.data.message)
-
-        }
-    };
 
     const HandleUpdate = async () => {
         try {

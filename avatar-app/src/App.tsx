@@ -15,8 +15,9 @@ import { ImageUploadPage } from "pages/ImageUploadPage";
 import { ConnectionPage } from "pages/ConnectionPage";
 import { AccountPage } from 'pages/AccountPage'
 import { AgentPage } from 'pages/AgentPage'
-
+import { HomePage } from "pages/HomePage";
 import { ROUTES } from "definitions/constant/routes";
+
 
 function App() {
   // route
@@ -25,7 +26,6 @@ function App() {
   // redux
   const auth = useAppSelector(selectAuth);
   const dispatch = useAppDispatch();
-
   // hooks
   useLayoutEffect(() => {
     dispatch(loadUser());
@@ -56,9 +56,7 @@ function App() {
             <Route path={ROUTES.connection} element={<ConnectionPage />} />
             <Route path={ROUTES.account} element={<AccountPage />} />
             <Route path={ROUTES.agent} element={<AgentPage />} />
-
-
-
+            <Route path={ROUTES.home} element={<HomePage />} />
           </Route>
           <Route path={ROUTES[404]} element={<Page404 />} />
           <Route path={ROUTES.login} element={<LoginPage />} />

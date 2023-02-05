@@ -38,6 +38,7 @@ import CreateIcon from "@mui/icons-material/Create";
 import FormControl from "@material-ui/core/FormControl";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { getUserName, getRole } from "utils/UtilService";
+import { toast } from "react-hot-toast";
 
 
 
@@ -73,6 +74,7 @@ const Connection = () => {
     paidAmount: 0,
     dueAmount: 0,
   });
+
   const [customer, setCustomer] = React.useState({
     agent: "",
   });
@@ -147,13 +149,13 @@ const Connection = () => {
       );
       if (result.data.data && result.data != undefined) {
         //@ts-ignore
-        // showToast(result.data.message, "success");
+        toast.success(result.data.message);
         setOpenPrice(false);
       }
     } catch (error) {
       if (error) {
         //@ts-ignore
-        // showToast(error.response.data.message, "error");
+        toast.error(error.response.data.message);
       }
     }
   };
@@ -165,9 +167,6 @@ const Connection = () => {
   const handleChangeSMS = (event: any) => {
     setSms({ ...sms, [event.target.name]: event.target.value });
   };
-
-
-
 
   const handleUpdate = async () => {
     setOpen(false);
@@ -198,7 +197,7 @@ const Connection = () => {
       );
       if (result.data.data && result.data != undefined) {
         //@ts-ignore
-        showToast(result.data.message, "success");
+        toast.success(result.data.message, "success");
         setOpen(false);
         setConnection({
           agent: "",
@@ -218,7 +217,7 @@ const Connection = () => {
     } catch (error) {
       if (error) {
         //@ts-ignore
-        // showToast(error.response.data.message, "error");
+        toast.error(error.response.data.message);
       }
     }
   };
@@ -246,7 +245,7 @@ const Connection = () => {
     } catch (error) {
       if (error) {
         //@ts-ignore
-        // showToast(error.response.data.message, "error");
+        toast.error(error.response.data.message);
       }
     }
   };
@@ -272,7 +271,7 @@ const Connection = () => {
     } catch (error) {
       if (error) {
         //@ts-ignore
-        // showToast(error.response.data.message, "error");
+        toast.error(error.response.data.message);
       }
     }
   };
@@ -356,7 +355,7 @@ const Connection = () => {
     } catch (error) {
       if (error) {
         //@ts-ignore
-        // showToast(error.response.data.message, "error");
+        toast.error(error.response.data.message);
       }
     }
   };
@@ -384,7 +383,7 @@ const Connection = () => {
     } catch (error) {
       if (error) {
         //@ts-ignore
-        // showToast(error.response.data.message, "error");
+        toast.error(error.response.data.message);
       }
     }
   };
@@ -405,12 +404,12 @@ const Connection = () => {
         }
       );
       if (result.data) {
-        // showToast(result.data.message, "success");
+        toast.success(result.data.message);
       }
     } catch (error) {
       if (error) {
         //@ts-ignore
-        // showToast(error.response.data.message, "error");
+        toast.error(error.response.data.message);
       }
     }
   };
@@ -793,11 +792,11 @@ const Connection = () => {
                   <CardContent>
                     <Typography gutterBottom>
                       Send SMS Update to{" "}
-                      <span style={{ color: "#e91e63", paddingTop: "3rem" }}>
+                      <span style={{ color: "#e91e63" }}>
                         {agent.agent}
                       </span>
                     </Typography>
-                    <Grid container spacing={1} style={{ marginTop: "2rem" }}>
+                    <Grid container spacing={1} >
                       <Grid item xs={6}>
                         <div style={{ margin: "2px" }}>
                           <TextField

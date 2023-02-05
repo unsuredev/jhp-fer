@@ -9,6 +9,7 @@ import { UserForm } from "../../features/users/UserForm";
 import { useCallback, useState } from "react";
 import { ROUTES } from "definitions/constant/routes";
 import { useParams, useLocation } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const FingerPrint = () => {
   const [allcustomer, setAllCustomer] = React.useState([]);
@@ -45,9 +46,13 @@ const FingerPrint = () => {
       });
       if (result.data) {
         setAllCustomer(result.data.data);
+        toast.success(result.data.message)
+
       }
     } catch (error) {
       console.error(error);
+      //@ts-ignore
+      toast.error(error.response.data.message);
     }
   };
 
@@ -79,9 +84,9 @@ const FingerPrint = () => {
             pathname === ROUTES.user
               ? [{ link: "#", title: "User" }]
               : [
-                  { link: ROUTES.company, title: "Company" },
-                  { link: "#", title: "User" },
-                ]
+                { link: ROUTES.company, title: "Company" },
+                { link: "#", title: "User" },
+              ]
           }
           onBtnClick={() => {
             setOpenDrawer(true);
